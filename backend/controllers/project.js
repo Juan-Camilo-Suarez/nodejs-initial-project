@@ -83,7 +83,24 @@ var controller = {
 
 
 
-    }
+    },
+    getProjects: function(req, res) {
+        Project.find({}).exec((err, projects)=>{
+
+            if (err)return res.status(500).send({
+                menssage: 'error al devolver los datos'
+            }); 
+            if (err)return res.status(404).send({
+                menssage: 'no se puede encontrar los projects'
+            });
+
+            return res.status(200). send({
+                projects});
+
+        });
+
+
+    },
 }
 
 module.exports = controller;
