@@ -32,7 +32,10 @@ app.get('/', (req, res)=>{
 })
 
 
-app.get('/test', (req, res)=>{
+app.post('/test/:id', (req, res)=>{
+    console.log(req.params.id);
+    console.log(req.query.name);
+    console.log(req.body.hola);
     res.status(200).send({
         message: 'hola mundo mi api'
     });
