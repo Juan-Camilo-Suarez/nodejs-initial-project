@@ -101,6 +101,28 @@ var controller = {
 
 
     },
+    updateProject: function(req, res) {
+        var projectId = req.params.id;
+        var update = req.body
+
+        Project.findByIdAndUpdate(projectId, update, (err, projectUpdate) => {
+            if(projectId == null) return res.status(404).send({message: 'El proyecto no existe.'});
+            if (err)return res.status(500).send({
+                menssage: 'error al devolver los datos'
+            }); 
+            if (!projectUpdate)return res.status(404).send({
+                menssage: 'no se puede encontrar el projecto'
+            });
+
+            return res.status(200). send({
+                project: projectUpdate,
+                
+        
+                });
+    
+
+        });
+    },
 }
 
 module.exports = controller;
